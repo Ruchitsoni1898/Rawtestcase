@@ -1,5 +1,5 @@
 from selenium import webdriver
-driver = webdriver.Chrome(executable_path="C:\Program Files\Drivers\chromedriver_win32\chromedriver.exe")
+driver = webdriver.Chrome(executable_path="D:\\chromedriver-win64\\chromedriver.exe")
 
 driver.get("https://demo.guru99.com/test/newtours/")
 assert "Welcome: Mercury Tours" in driver.title

@@ -1,11 +1,19 @@
-import time
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-driver = webdriver.Chrome(executable_path="C:\Program Files\Drivers\chromedriver_win32\chromedriver.exe")
-driver.get("https://demo.automationtesting.in/Windows.html")
-driver.find_element_by_xpath("//*[@id='Tabbed']/a/button").click()
-time.sleep(4)
-print(driver.title)
-print(driver.current_url)
-#driver.close()
-driver.quit()
+from selenium.webdriver.chrome.options import Options
+
+chrome_driver_path = "D:\\chromedriver-win64\\chromedriver.exe"
+
+chrome_options = Options()
+chrome_options.add_argument(f"executable_path={chrome_driver_path}")
+
+try:
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.maximize_window()
+    driver.implicitly_wait(10)
+    driver.get("https://www.msn.com/de-de")
+    driver.find_element_by_name("q").send_keys("selenium")
+    driver.find_element_by_name("btnK").submit()  # Make sure this is the correct name
+    driver.close()
+
+except Exception as e:
+    print(f"An error occurred: {e}")
